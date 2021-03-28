@@ -22,27 +22,3 @@ body {
   font-size: 14px;
   background-color: var(--dark-background);
 }
-
-img {
-  aspect-ratio: 16 / 9.7;
-  width: 100%;
-  object-fit: cover;
-}
-
-.grid {
-  display: grid;
-  margin: 0 auto;
-  max-width: 1281px;
-  grid-template-columns: repeat(auto-fit, 264px);
-  align-items: center;
-  gap: 75px;
-}
-
-.country {
-  width: 264px;
-  height: 336px;
-  background: var(--dark-elements);
-}
-.country__details {
-  padding: 30px;
-}

@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 
+import Countries from "./components/Countries";
+
 const App = () => {
   const [countries, setCountries] = useState([]);
 
@@ -8,24 +10,10 @@ const App = () => {
     .then(res => res.json())
     .then(data => setCountries(data))
   }, [])
-
   return (
-    <div className="grid">
-      {countries.map(country => {
-        const { name, capital, flag, population, region, numericCode } = country;
-        return (
-          <div className="country" key={numericCode}>
-            <img src={flag} alt={name} />
-            <div className="country__details">
-              <h2>{name}</h2>
-              <p><span>Population:</span> {population}</p>
-              <p><span>Region:</span> {region}</p>
-              <p><span>Capital:</span> {capital}</p>
-            </div>
-          </div>
-        )
-      })}
-    </div>
+    <>
+    <Countries countries={countries}/>
+    </>
   );
 }
 
