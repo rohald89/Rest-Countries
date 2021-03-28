@@ -5,21 +5,24 @@ import { Link } from "react-router-dom";
 const Country = () => {
     const {id} = useParams();
     const [country, setCountry] = useState();
+    // const {name, flag, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages} = countries[id];
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        let url = `https://restcountries.eu/rest/v2/name/${id}`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setCountry(data[0]))
-        .then(setLoading(false));
+        async function dataFetching() {
+            const response = await fetch(`https://restcountries.eu/rest/v2/name/${id}`);
+            const data = await response.json();
+            setCountry(data[0]);
+            setLoading(false);
+        }
+        dataFetching();
     }, [id]);
     
     return (
         <div>
             {
-                loading ? 
-                <h1>Fetching data</h1>
-                : <div className="container">
+                loading ? <h1>Loading...</h1> 
+                : 
+                <div className="container">
                     <Link to="/">Back</Link>
                     <div className="country">
                         <img src={country.flag} alt={`Flag of ${country.name}`}/>
@@ -35,9 +38,12 @@ const Country = () => {
                                 </div>
                                 <div>
                                     <p><span>Top Level Domain: </span>{country.topLevelDomain}</p>
-                                    <p><span>Currencies: </span>{country.currencies.filter(currency => currency.name).join(', ')}</p>
-                                    <p><span>Languages: </span>{country.languages.forEach(language => language.name)}</p>
+                                    <p><span>Currencies: </span>{country.currencies.map(currency => currency.name).join(', ')}</p>
+                                    <p><span>Languages: </span>{country.languages.map(language => language.name).join(', ')}</p>
                                 </div>
+                            </div>
+                            <div className="country-borders">
+
                             </div>
                         </div>
                     </div>

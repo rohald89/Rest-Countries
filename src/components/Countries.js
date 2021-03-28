@@ -45,7 +45,7 @@ const Countries = ({countries}) => {
   return (
     <Grid className="grid">
       { countries.length ? 
-        countries.map(country => {
+        countries.map((country, i) => {
         const { name, capital, flag, population, region, numericCode } = country;
         return (
           <CountryCard className="country" key={numericCode}>
