@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import Countries from "./components/Countries";
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   const [countries, setCountries] = useState([]);
@@ -12,6 +13,7 @@ const App = () => {
   }, [])
   return (
     <>
+    <SearchBar />
     <Countries countries={countries}/>
     </>
   );
