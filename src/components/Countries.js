@@ -6,6 +6,7 @@ const Grid = styled.div`
   max-width: 1281px;
   grid-template-columns: repeat(auto-fit, 264px);
   align-items: center;
+  justify-content: center;
   gap: 75px;
 `;
 
@@ -14,7 +15,7 @@ const CountryCard = styled.div`
   height: 336px;
   background: var(--dark-elements);
   img {
-  aspect-ratio: 16 / 9.7;
+  aspect-ratio: 16 / 9.697;
   width: 100%;
   object-fit: cover;
 }
@@ -48,7 +49,7 @@ const Countries = ({countries}) => {
             <img src={flag} alt={name} />
             <div className="country__details">
               <h2>{name}</h2>
-              <p><span>Population:</span> {population}</p>
+              <p><span>Population:</span> {new Intl.NumberFormat().format(population)}</p>
               <p><span>Region:</span> {region}</p>
               <p><span>Capital:</span> {capital}</p>
             </div>
