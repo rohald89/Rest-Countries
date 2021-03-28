@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const Grid = styled.div`
   display: grid;
@@ -48,7 +49,9 @@ const Countries = ({countries}) => {
         const { name, capital, flag, population, region, numericCode } = country;
         return (
           <CountryCard className="country" key={numericCode}>
-            <img src={flag} alt={name} />
+            <Link to={`/${name}`}>
+              <img src={flag} alt={name} />
+            </Link>
             <div className="country__details">
               <h2>{name}</h2>
               <p><span>Population:</span> {new Intl.NumberFormat().format(population)}</p>

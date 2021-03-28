@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 
 import Countries from "./components/Countries";
+import Country from './components/Country';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 
@@ -26,8 +29,15 @@ const App = () => {
   return (
     <>
     <Header />
-    <SearchBar setQuery={setQuery} setRegion={setRegion}/>
-    <Countries countries={countries}/>
+    <Router>
+      <Route path='/' exact>
+        <SearchBar setQuery={setQuery} setRegion={setRegion}/>
+        <Countries countries={countries}/>
+      </Route>
+      <Route path='/:id'>
+        <Country />
+      </Route>
+    </Router>
     </>
   );
 }
