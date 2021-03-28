@@ -6,16 +6,27 @@ import SearchBar from './components/SearchBar';
 
 const App = () => {
   const [countries, setCountries] = useState([]);
+  const [query, setQuery] = useState('');
+  const [region, setRegion] = useState('');
 
   useEffect(() => {
-    fetch('https://restcountries.eu/rest/v2/all')
+    let url = 'https://restcountries.eu/rest/v2/';
+    if (query) {
+      url = url + `name/${query}`;
+    } else if (region){
+      url = url + `region/${region}`;
+    } else {
+      url = url + `all`;
+    }
+    fetch(url)
     .then(res => res.json())
     .then(data => setCountries(data))
-  }, [])
+  }, [query, region])
+
   return (
     <>
     <Header />
-    <SearchBar />
+    <SearchBar setQuery={setQuery} setRegion={setRegion}/>
     <Countries countries={countries}/>
     </>
   );

@@ -39,14 +39,14 @@ const SearchBarStyles = styled.div`
     }    
 `;
 
-const SearchBar = () => {
+const SearchBar = ({setQuery, setRegion}) => {
     return (
         <SearchBarStyles>
-            <input type="text" placeholder="Search for a country..."/>
-            <select name="region" id="region">
-                <option disabled value="Filter by Region">Filter By Region</option>
+            <input type="text" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
+            <select name="region" id="region" onChange={(e) => { setQuery(''); setRegion(e.target.value)}}>
+                <option disabled selected value="Filter by Region">Filter By Region</option>
                 <option value="africa">Africa</option>
-                <option value="america">America</option>
+                <option value="americas">America</option>
                 <option value="asia">Asia</option>
                 <option value="europe">Europe</option>
                 <option value="oceania">Oceania</option>

@@ -43,7 +43,8 @@ const CountryCard = styled.div`
 const Countries = ({countries}) => {
   return (
     <Grid className="grid">
-      {countries.map(country => {
+      { countries.length ? 
+        countries.map(country => {
         const { name, capital, flag, population, region, numericCode } = country;
         return (
           <CountryCard className="country" key={numericCode}>
@@ -56,7 +57,9 @@ const Countries = ({countries}) => {
             </div>
           </CountryCard>
         )
-      })}
+      }) :
+      'Sorry no results found'
+    }
     </Grid>
   );
 }
