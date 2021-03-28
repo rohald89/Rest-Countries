@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Grid = styled.div`
   display: grid;
   margin: 0 auto;
+  width: 90%;
   max-width: 1281px;
   grid-template-columns: repeat(auto-fit, 264px);
   align-items: center;

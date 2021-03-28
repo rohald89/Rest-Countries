@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import Countries from "./components/Countries";
+import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
   }, [])
   return (
     <>
+    <Header />
     <SearchBar />
     <Countries countries={countries}/>
     </>

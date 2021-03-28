@@ -2,23 +2,42 @@ import styled from "styled-components"
 
 const SearchBarStyles = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    margin: 48px auto;
+    margin: 18px auto 32px auto;
+    width: 100%;
     max-width: 1280px;
     input {
-        width: 90%;
-        max-width: 480px;
+        /* width: 100%; */
+        margin: 0 16px;
         height: 56px;
-        padding: 18px 74px;
+        padding: 24px 74px;
         background: var(--dark-elements);
         &::placeholder {
             color: var(--white);
         }
     }
     select {
+        width: 90%;
+        max-width: 200px;
+        margin-left: 16px;
+        margin-top: 40px;
         padding: 18px 24px;
         background: var(--dark-elements);
-    }`;
+    }
+    @media (min-width: 768px) {
+        flex-direction: row;
+        margin: 48px auto;
+        width: 90%;
+        input {
+        margin: 0;
+        width: 480px;
+        }
+        select {
+            margin: 0;
+        }
+    }    
+`;
 
 const SearchBar = () => {
     return (
