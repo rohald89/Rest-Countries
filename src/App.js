@@ -17,14 +17,21 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const {theme, setCountries} = useContext(CountriesContext);
+  const {theme, query, region, setCountries} = useContext(CountriesContext);
 
   useEffect(() => {
-    let url = 'https://restcountries.eu/rest/v2/all';
+    let url = 'https://restcountries.eu/rest/v2/';
+    if(query === '' && region === '') {
+      url = url + 'all';
+    } else if (query !== '') {
+      url = url + `name/${query}`;
+    } else {
+      url = url + `region/${region}`;
+    }
     fetch(url)
     .then(res => res.json())
     .then(data => setCountries(data))
-  }, [])
+  }, [query, region])
 
   return (
     <ThemeProvider theme={theme}>

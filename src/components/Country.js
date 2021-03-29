@@ -1,10 +1,59 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router"
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { CountriesContext } from "./context";
+
+const CountryStyles = styled.div`
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    a {
+        display: flex;
+        width: 136px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 80px;
+        font-size: 16px;
+        i {
+            margin-right: 10px;
+        }
+    }
+    .country {
+        margin-top: 80px;
+        display: flex;
+        height: 401px;
+        align-items: center;
+    }
+    img {
+        width: 100%;
+        max-width: 560px;
+        margin-right: 120px;
+    }
+    .country-details {
+        font-size: 16px;
+        line-height: 32px;
+        width: 100%;
+        h1 {
+            font-size: 32px;
+            line-height: 44px;
+            margin-bottom: 23px;
+        }
+        span {
+            font-weight: 600;
+        }
+    }
+    .country-info {
+        display: flex;
+        justify-content: space-between;
+    }
+`;
 
 const Country = () => {
     const {id} = useParams();
-    const [country, setCountry] = useState();
+    const {country, setCountry} = useContext(CountriesContext);
     // const {name, flag, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages} = countries[id];
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -22,8 +71,8 @@ const Country = () => {
             {
                 loading ? <h1>Loading...</h1> 
                 : 
-                <div className="container">
-                    <Link to="/">Back</Link>
+                <CountryStyles>
+                    <Link to="/"><i className="far fa-long-arrow-left"></i>Back</Link>
                     <div className="country">
                         <img src={country.flag} alt={`Flag of ${country.name}`}/>
                         <div className="country-details">
@@ -47,7 +96,7 @@ const Country = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </CountryStyles>
             }
         </div>
     )

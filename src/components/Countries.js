@@ -19,34 +19,39 @@ const CountryCard = styled.div`
   height: 336px;
   background: var(--background-element);
   color: var(--text);
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.0294384);
+  border-radius: 5px;
+  overflow: hidden;
+
   img {
-  aspect-ratio: 16 / 9.697;
-  width: 100%;
-  object-fit: cover;
-}
-.country__details {
-  padding: 24px;
-  h2 {
-    font-size: 18px;
-    line-height: 26px;
-    margin-bottom: 16px;
-  }
-  p {
-    span{
-      font-weight: 600;
-      line-height: 16px;
+    aspect-ratio: 16 / 9.697;
+    width: 100%;
+    object-fit: cover;
+  } 
+
+  .country__details {
+    padding: 24px;
+    h2 {
+      font-size: 18px;
+      line-height: 26px;
+      margin-bottom: 16px;
     }
-    &:not(:last-child) {
-      margin-bottom: 8px;
+    p {
+      span{
+        font-weight: 600;
+        line-height: 16px;
+      }
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
     }
   }
-}
 
 `;
 
 const Countries = () => {
-
   const {countries} = useContext(CountriesContext);
+
   return (
     <Grid className="grid">
       { countries.length ? 

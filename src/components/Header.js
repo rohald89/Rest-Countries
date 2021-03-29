@@ -25,17 +25,20 @@ width: 100%;
     .fa-moon:before {
         margin: 10px;
     }
+    i {
+        cursor: pointer;
+    }
 }
 `;
 
 const Header = () => {
-    const {theme, setTheme} = useContext(CountriesContext);
+    const {theme, changeTheme} = useContext(CountriesContext);
     return (
         <HeaderStyles className="header">
             <div className="header-content">
                 <h1>Where in the world?</h1>
                 <i 
-                onClick={() => theme.mode === 'light' ? setTheme({ mode: 'dark'}) : setTheme({ mode: 'light' })}
+                onClick={changeTheme}
                 className={ theme.mode === 'light' ? "fal fa-moon" : "fas fa-moon"}>
                     Dark Mode
                 </i>

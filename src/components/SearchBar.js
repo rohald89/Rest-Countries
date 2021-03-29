@@ -9,14 +9,30 @@ const SearchBarStyles = styled.div`
     margin: 18px auto 32px auto;
     width: 100%;
     max-width: 1280px;
+    .inputfield {
+        position: relative;
+        i {
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(-50%, -50%);
+        }
+    }
+
     input {
         /* width: 100%; */
         margin: 0 16px;
         height: 56px;
         padding: 24px 74px;
         background: var(--background-element);
+        box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+        border-radius: 5px;
+        border: none;
         &::placeholder {
             color: var(--white);
+        }
+        &:before {
+            content: 'TEST';
         }
     }
     select {
@@ -25,6 +41,10 @@ const SearchBarStyles = styled.div`
         margin-left: 16px;
         margin-top: 40px;
         padding: 18px 24px;
+        box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+        border-radius: 5px;
+        border: none;
+        outline: none;
         background: var(--background-element);
     }
     @media (min-width: 768px) {
@@ -45,9 +65,12 @@ const SearchBar = () => {
     const {setQuery, setRegion} = useContext(CountriesContext);
     return (
         <SearchBarStyles>
-            <input type="text" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
+            <div className="inputfield">
+                <i class="far fa-search"></i>
+                <input type="text" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
+            </div>
             <select name="region" id="region" onChange={(e) => { setQuery(''); setRegion(e.target.value)}}>
-                <option disabled defaultValue="Filter by Region">Filter By Region</option>
+                <option value="">Filter By Region</option>
                 <option value="africa">Africa</option>
                 <option value="americas">America</option>
                 <option value="asia">Asia</option>
