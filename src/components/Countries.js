@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { useContext } from 'react';
+import { CountriesContext } from './context';
 
 const Grid = styled.div`
   display: grid;
@@ -15,7 +17,8 @@ const Grid = styled.div`
 const CountryCard = styled.div`
   width: 264px;
   height: 336px;
-  background: var(--dark-elements);
+  background: var(--background-element);
+  color: var(--text);
   img {
   aspect-ratio: 16 / 9.697;
   width: 100%;
@@ -41,11 +44,13 @@ const CountryCard = styled.div`
 
 `;
 
-const Countries = ({countries}) => {
+const Countries = () => {
+
+  const {countries} = useContext(CountriesContext);
   return (
     <Grid className="grid">
       { countries.length ? 
-        countries.map((country, i) => {
+        countries.map(country => {
         const { name, capital, flag, population, region, numericCode } = country;
         return (
           <CountryCard className="country" key={numericCode}>

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components"
+import { CountriesContext } from "./context";
 
 const SearchBarStyles = styled.div`
     display: flex;
@@ -12,7 +14,7 @@ const SearchBarStyles = styled.div`
         margin: 0 16px;
         height: 56px;
         padding: 24px 74px;
-        background: var(--dark-elements);
+        background: var(--background-element);
         &::placeholder {
             color: var(--white);
         }
@@ -23,7 +25,7 @@ const SearchBarStyles = styled.div`
         margin-left: 16px;
         margin-top: 40px;
         padding: 18px 24px;
-        background: var(--dark-elements);
+        background: var(--background-element);
     }
     @media (min-width: 768px) {
         flex-direction: row;
@@ -39,7 +41,8 @@ const SearchBarStyles = styled.div`
     }    
 `;
 
-const SearchBar = ({setQuery, setRegion}) => {
+const SearchBar = () => {
+    const {setQuery, setRegion} = useContext(CountriesContext);
     return (
         <SearchBarStyles>
             <input type="text" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
