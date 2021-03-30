@@ -14,7 +14,7 @@ const SearchBarStyles = styled.div`
         i {
             position: absolute;
             top: 50%;
-            left: 40px;
+            left: 32px;
             transform: translate(-50%, -50%);
         }
     }
