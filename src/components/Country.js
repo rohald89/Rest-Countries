@@ -29,7 +29,10 @@ const CountryStyles = styled.div`
     }
     img {
         width: 100%;
+        border-radius: 5px;
         max-width: 560px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
         margin-right: 120px;
     }
     .country-details {
@@ -49,11 +52,27 @@ const CountryStyles = styled.div`
         display: flex;
         justify-content: space-between;
     }
+    .country-borders {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 68px;
+        span {
+            margin-right: 15px;
+        }
+        a {
+            margin: 5px;
+            width: 96px;
+            box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931);
+            border-radius: 2px;
+            background: var(--background-element);
+        }
+    }
 `;
 
 const Country = () => {
     const {id} = useParams();
-    const {country, setCountry} = useContext(CountriesContext);
+    const {country, setCountry, getNameFromCode} = useContext(CountriesContext);
     // const {name, flag, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages} = countries[id];
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -92,7 +111,10 @@ const Country = () => {
                                 </div>
                             </div>
                             <div className="country-borders">
-
+                                <p><span>Border Countries:</span></p>
+                                {
+                                    country.borders.map(border => <Link to={`/${getNameFromCode(border)}`} key={border}>{getNameFromCode(border)}</Link>)
+                                }
                             </div>
                         </div>
                     </div>

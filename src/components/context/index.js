@@ -11,6 +11,13 @@ export const Provider = (props) => {
 
   const changeTheme = () => theme.mode === 'light' ? setTheme({ mode: 'dark'}) : setTheme({ mode: 'light' });
 
+  const getNameFromCode = (code) => {
+    const country = countries.find( country => country.alpha3Code === code );
+    const name = country ? country.name : code;
+    return name;
+  }
+
+
 //   const handleScoreChange = (index, delta) => {
 //     setPlayers(prevState => {
 //       const updatedPlayers = [ ...prevState ];
@@ -53,6 +60,7 @@ export const Provider = (props) => {
       setRegion,
       country,
       setCountry,
+      getNameFromCode
     //   actions: {
     //     changeScore: handleScoreChange,
     //     addPlayer: handleAddPlayer,
