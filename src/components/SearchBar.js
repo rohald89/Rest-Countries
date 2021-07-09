@@ -67,9 +67,9 @@ const SearchBar = () => {
         <SearchBarStyles>
             <div className="inputfield">
                 <i className="far fa-search"></i>
-                <input type="text" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
+                <input type="text" aria-label="search for a country" placeholder="Search for a country..." onChange={(e) => setQuery(e.target.value)}/>
             </div>
-            <select name="region" id="region" onChange={(e) => { setQuery(''); setRegion(e.target.value)}}>
+            <select name="region" aria-label="select a region" id="region" onChange={(e) => { setQuery(''); setRegion(e.target.value)}}>
                 <option value="">Filter By Region</option>
                 <option value="africa">Africa</option>
                 <option value="americas">America</option>
